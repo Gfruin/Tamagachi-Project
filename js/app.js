@@ -49,6 +49,9 @@ class Barbarian {
     displayRage() { 
     	$('#rage').text(`Rage ${game.currentPlayer.rage}`);
     }
+    displayAge() { 
+    	$('#age').text(`Age ${game.currentPlayer.age}`);
+    }
 
 }
 
@@ -64,6 +67,7 @@ const game = {
 		this.currentPlayer.displayHunger();
 		this.currentPlayer.displayExhaustion();
 		this.currentPlayer.displayRage();
+		this.currentPlayer.displayAge();
 
 
 
