@@ -1,6 +1,6 @@
 
 class Barbarian {
-	constructor(name, hunger, exhaustion, rage, age) {
+	constructor(name) {
 		this.name = name;
 		this.hunger = Math.random() * (10 - 1) + 1;
 		this.exhaustion = Math.random() * (10 - 1) + 1;
@@ -9,13 +9,27 @@ class Barbarian {
 
 	}
 	attack() {
-		console.log(this.name +  " attacks!!");
+		$('.slime').on('click', (e) => {
+			console.log('clicked!');
+			if(this.hunger >= 0) {
+				this.hunger = this.hunger - 1;
+			}
+			this.rage = this.rage + 1 ;
+			
+			
+		})
+		// this.rage = this.rage + 1;
+		console.log( this.name +  " attacks!!");
+		
+		}
 	}
-}
 
 const game = {
-	start: () => {
-		attack();
+	currentPlayer: null,
+	start: function() {
+		this.currentPlayer = new Barbarian('Barb');
+		console.log(this.currentPlayer);
+		this.currentPlayer.attack();
 		
 	}
 
@@ -26,8 +40,7 @@ $('#barbarian').on('click', () => {
 	console.log("RAAAAAAGGGGGGEEEEEEEE!!!!!");
 })
 
-const barb = new Barbarian('Barb');
-console.log(barb);
+
 
 game.start()
 
