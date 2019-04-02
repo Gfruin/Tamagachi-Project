@@ -1,15 +1,43 @@
-#barbarian {
-	display: flex;
-	width: 200px;
-	height: 200px;
-	max-width: 100%;
-	max-height: 600px;
-	justify-content: justify;
-	flex-shrink: .5;
-	background-color: rgba(0,255,255,0.5);
-}
-
 body {
 	background-image: 
 	url("https://i.ytimg.com/vi/kxqJuc1HHbg/maxresdefault.jpg");
+	
 }
+
+.feelers {
+	color: white;
+
+}
+
+
+div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+
+
+}
+#barbarian {
+	display: flex;
+	width: 300px;
+	height: 300px;
+	max-width: 100%;
+	max-height: 600px;
+	/*justify-content: justify;*/
+	flex-shrink: .5;
+	/*margin-left: auto;*/
+	/*margin-right: auto;*/
+}
+
+.slime {
+	display: flex;
+	width: 100px;
+	height: 100px;
+	margin-top: auto;
+
+
+}
+
+

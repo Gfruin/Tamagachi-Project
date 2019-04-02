@@ -32,6 +32,17 @@ class Barbarian {
         	this.exhaustion = this.exhaustion - 1;
         }
     }
+    whatsMyName() {
+    	const valueOfInput = $('#input-box').val();
+		console.log(valueOfInput);
+		$('h1').append(` ${valueOfInput}`);
+		$('#input-box').val('');
+    }
+    whatsMyHunger() { 
+    	$('h2').append(` ${game.currentPlayer.hunger}`);
+		$('h2').val('');
+
+    }
 }
 
 
@@ -42,6 +53,9 @@ const game = {
         console.log(this.currentPlayer);
         this.currentPlayer.attack();
         this.currentPlayer.induceRage();
+        this.currentPlayer.whatsMyName();
+		this.currentPlayer.whatsMyHunger();
+
 
     }
 
@@ -62,7 +76,10 @@ $(document).on('click', (e) => {
 
 
 $('.slime').on('click', (e) => {
-	game.currentPlayer.attack()
+	game.currentPlayer.attack();
+	game.currentPlayer.whatsMyHunger();
+	// $('h2').append(` ${game.curre}`);
+	// $('h2').val('');
 	
 })
 
@@ -73,5 +90,20 @@ $('#barbarian').on('click', (e) => {
 })
 
 $('#submit-btn').on('click', () => {
-	console.log('click works');
+	game.currentPlayer.whatsMyName();
+	// console.log('click works');
+	
+
 })
+
+
+
+
+
+
+
+
+
+
+
+
