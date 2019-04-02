@@ -13,6 +13,9 @@ class Barbarian {
         if (this.hunger > 0) {
             this.hunger = this.hunger - 1;
         }
+        if(this.exhaustion < 10) {
+        	this.exhaustion = this.exhaustion + 1;
+        }
         this.rage = this.rage + 1;
 
         // this.rage = this.rage + 1;
@@ -22,7 +25,11 @@ class Barbarian {
     induceRage() {
         if (this.rage > 0) {
             this.rage = this.rage + 1;
+            console.log("RAAAAAAGGGGGGEEEEEEEE!!!!!");
 
+        }
+        if(this.exhaustion > 0) {
+        	this.exhaustion = this.exhaustion - 1;
         }
     }
 }
@@ -34,6 +41,7 @@ const game = {
         this.currentPlayer = new Barbarian('Barb');
         console.log(this.currentPlayer);
         this.currentPlayer.attack();
+        this.currentPlayer.induceRage();
 
     }
 
@@ -60,5 +68,10 @@ $('.slime').on('click', (e) => {
 
 
 $('#barbarian').on('click', (e) => {
-			console.log("RAAAAAAGGGGGGEEEEEEEE!!!!!");
+	game.currentPlayer.induceRage()
+			
+})
+
+$('#submit-btn').on('click', () => {
+	console.log('click works');
 })
