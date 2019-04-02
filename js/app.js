@@ -32,17 +32,24 @@ class Barbarian {
         	this.exhaustion = this.exhaustion - 1;
         }
     }
-    whatsMyName() {
+    displayName() {
     	const valueOfInput = $('#input-box').val();
 		console.log(valueOfInput);
-		$('h1').append(` ${valueOfInput}`);
-		$('#input-box').val('');
+		$('#name').text(` ${valueOfInput}`);
+		// $('#input-box').val('');
     }
-    whatsMyHunger() { 
-    	$('h2').append(` ${game.currentPlayer.hunger}`);
-		$('h2').val('');
+    displayHunger() { 
+    	$('#hunger').text(`Hunger ${game.currentPlayer.hunger}`);
+		// $('h2').val('');
 
     }
+    displayExhaustion() { 
+    	$('#exhaustion').text(`Exhaustion ${game.currentPlayer.exhaustion}`);
+    }
+    displayRage() { 
+    	$('#rage').text(`Rage ${game.currentPlayer.rage}`);
+    }
+
 }
 
 
@@ -53,12 +60,14 @@ const game = {
         console.log(this.currentPlayer);
         this.currentPlayer.attack();
         this.currentPlayer.induceRage();
-        this.currentPlayer.whatsMyName();
-		this.currentPlayer.whatsMyHunger();
+        this.currentPlayer.displayName();
+		this.currentPlayer.displayHunger();
+		this.currentPlayer.displayExhaustion();
+		this.currentPlayer.displayRage();
 
 
-    }
 
+	}
 
 }
 
@@ -77,7 +86,8 @@ $(document).on('click', (e) => {
 
 $('.slime').on('click', (e) => {
 	game.currentPlayer.attack();
-	game.currentPlayer.whatsMyHunger();
+	game.currentPlayer.displayHunger();
+	game.currentPlayer.displayExhaustion();
 	// $('h2').append(` ${game.curre}`);
 	// $('h2').val('');
 	
@@ -85,12 +95,13 @@ $('.slime').on('click', (e) => {
 
 
 $('#barbarian').on('click', (e) => {
-	game.currentPlayer.induceRage()
+	game.currentPlayer.induceRage();
+	game.currentPlayer.displayRage();
 			
 })
 
 $('#submit-btn').on('click', () => {
-	game.currentPlayer.whatsMyName();
+	game.currentPlayer.displayName();
 	// console.log('click works');
 	
 
