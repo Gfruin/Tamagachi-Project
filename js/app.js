@@ -3,7 +3,7 @@ class Barbarian {
         this.name = name;
         this.hunger = Math.floor(Math.random() * (10 - 1) + 1);
         this.exhaustion = Math.floor(Math.random() * (10 - 1) + 1);
-        this.rage = 5;
+        this.rage = 2;
         this.age = Math.floor(Math.random() * (100 - 1) + 1);
 
     }
@@ -77,7 +77,7 @@ class Barbarian {
     evolve() {
         if (this.rage >= 20) {
             $('#picBro').attr('src', 'https://vignette.wikia.nocookie.net/pfadventures/images/c/c1/Amiri_portrait_alternate-1323-0.png/revision/latest?cb=20170819202803');
-
+            $('#words').text(`NO ONE CAN STOP ${this.name} !!!!!!! RAMPAGE!!!!`)
         }
     }
     noSleep() {
@@ -108,6 +108,12 @@ const game = {
     interval: null,
     isAlive: true,
     // gameOn: false,
+    gameWin() {
+    	if(rage == 50) {
+    		$('#gameover').text('FEAST ON THE BONES OF THE SLAIN!!!!!')
+    		clearInterval(this.interval);
+    	}
+    },
     gameOver() {
         if (!this.isAlive) {
             // const newImg = "Amiri"
@@ -141,6 +147,7 @@ const game = {
         this.interval = setInterval(function() {
             game.lifeCheck();
             game.gameOver();
+            game.gameWin();
             game.currentPlayer.displayHunger();
             game.currentPlayer.displayExhaustion();
             game.currentPlayer.displayRage();
