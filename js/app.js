@@ -3,7 +3,7 @@ class Barbarian {
         this.name = name;
         this.hunger = Math.floor(Math.random() * (10 - 1) + 1);
         this.exhaustion = Math.floor(Math.random() * (10 - 1) + 1);
-        this.rage = 2;
+        this.rage = 6;
         this.age = Math.floor(Math.random() * (100 - 1) + 1);
 
     }
@@ -102,22 +102,22 @@ class Barbarian {
 
 
 const game = {
-	name: null,
+    name: null,
     currentPlayer: null,
     timer: 0,
     interval: null,
     isAlive: true,
     // gameOn: false,
     gameWin() {
-    	if(rage == 50) {
-    		$('#gameover').text('FEAST ON THE BONES OF THE SLAIN!!!!!')
-    		clearInterval(this.interval);
-    	}
+        if (this.rage === 10) {
+            $('#gameover').text('FEAST ON THE BONES OF THE SLAIN!!!!!')
+            clearInterval(this.interval);
+        }
     },
     gameOver() {
         if (!this.isAlive) {
             // const newImg = "Amiri"
-            $('#gameover').text("GAME OVER!!!");
+            $('#gameover').text(`${this.name} has FAILED!!!! ${this.name}, you failed to CRUSH your ENEMIES and CONSUME their SOULS! The lowly SLIMES reign victorious over your LONELY BONES!!!`);
             clearInterval(this.interval);
 
         }
@@ -129,12 +129,12 @@ const game = {
     },
     start() {
 
-    	this.name = $('#input-box').val();
+        this.name = $('#input-box').val();
 
-    	$('#name').text(` ${this.name}`);
+        $('#name').text(` ${this.name}`);
 
-    	// get value of input 
-    	// const valueOfInput = ;
+        // get value of input 
+        // const valueOfInput = ;
 
         this.currentPlayer = new Barbarian(this.name);
         // if ( game.gameOn === false) {
@@ -196,7 +196,7 @@ $('#barbarian').on('click', (e) => {
 })
 
 $('#submit-btn').on('click', (e) => {
-	/// get name
+    /// get name
     // game.currentPlayer.displayName();
     e.preventDefault();
     game.start();
@@ -211,13 +211,3 @@ $('#sleep-btn').on('click', (e) => {
 })
 
 // $('#timer').text("Timer" + game.timer);
-
-
-
-
-
-
-
-
-
-
