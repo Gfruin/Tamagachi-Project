@@ -54,26 +54,34 @@ class Barbarian {
     }
     increaseAge() {
     	if (game.timer % 5 ==0) {
-    	this.age = this.age + 1
+    		this.age = this.age + 1
     	}
     }
     increaseExhaustion() {
     	if (game.timer % 5 ==0) {
-    	this.exhaustion = this.exhaustion + 1
+    		this.exhaustion = this.exhaustion + 1
     	}
     }increaseHunger() {
     	if (game.timer % 5 ==0) {
-    	this.hunger = this.hunger + 1
+    		this.hunger = this.hunger + 1
     	}
     }decreaseRage() {
     	if (game.timer % 5 ==0) {
-    	this.rage = this.rage - 1
+    		this.rage = this.rage - 1
     	}
     }
     evolve() {
     	if(this.rage >= 20) {
-    	$('#barbarian').attr('src', 'https://vignette.wikia.nocookie.net/pfadventures/images/c/c1/Amiri_portrait_alternate-1323-0.png/revision/latest?cb=20170819202803');
+    		$('#picBro').attr('src', 'https://vignette.wikia.nocookie.net/pfadventures/images/c/c1/Amiri_portrait_alternate-1323-0.png/revision/latest?cb=20170819202803');
 
+    	}
+    }
+    noSleep() {
+    	// console.log("no sleep function fired");
+    	if (this.exhaustion > 0) {
+	    	this.exhaustion = this.exhaustion + 1;
+	    	$('#words').text("NO SLEEPING, WEAKLING!!!!")
+	    	// $('#words').text('');
     	}
     }
     // switchImg() {
@@ -109,11 +117,12 @@ const game = {
     },
     start: function() {
         this.currentPlayer = new Barbarian('Barb');
+        game.currentPlayer.displayName();
         console.log(this.currentPlayer);
+		// game.currentPlayer.noSleep();
         game.currentPlayer.attack();
         game.currentPlayer.induceRage();
 		// game.currentPlayer.switchImg();
-        game.currentPlayer.displayName();
     	this.interval = setInterval(function() {
 		game.lifeCheck();
 		game.gameOver();
@@ -163,10 +172,15 @@ $('#barbarian').on('click', (e) => {
 			
 })
 
-$('#submit-btn').on('click', () => {
+$('#submit-btn').on('click', (e) => {
 	game.currentPlayer.displayName();
 	// console.log('click works');
 
+})
+
+$('#sleep-btn').on('click', (e) => {
+	game.currentPlayer.noSleep();
+	console.log("button clicked!");
 
 })
 
