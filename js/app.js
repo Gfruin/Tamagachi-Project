@@ -36,7 +36,7 @@ class Barbarian {
     	const valueOfInput = $('#input-box').val();
 		console.log(valueOfInput);
 		$('#name').text(` ${valueOfInput}`);
-		// $('#input-box').val('');
+		$('#input-box').val('');
     }
     displayHunger() { 
     	$('#hunger').text(`Hunger ${game.currentPlayer.hunger}`);
@@ -70,6 +70,15 @@ class Barbarian {
     	this.rage = this.rage - 1
     	}
     }
+    // switchImg() {
+    // 	function change() {
+    // 		let newPic = document.getElementbyId('#barbarian');
+    // 		if(this.rage >= 20) {
+    // 			image.src ="https://vignette.wikia.nocookie.net/pfadventures/images/c/c1/Amiri_portrait_alternate-1323-0.png/revision/latest?cb=20170819202803"
+    // 	}
+    		
+    // 	}
+    // }
     
 }
 
@@ -81,8 +90,10 @@ const game = {
     isAlive: true,
     gameOver() { 
     	if(!this.isAlive) {
+    		const newImg = "Amiri"
+    		$('#gameover').text("GAME OVER!!!" );
     		clearInterval(this.interval);
-    		
+
     	}
     },
     lifeCheck: function() {
@@ -95,10 +106,11 @@ const game = {
         console.log(this.currentPlayer);
         game.currentPlayer.attack();
         game.currentPlayer.induceRage();
+		// game.currentPlayer.switchImg();
+        game.currentPlayer.displayName();
     	this.interval = setInterval(function() {
 		game.lifeCheck();
 		game.gameOver();
-        game.currentPlayer.displayName();
 		game.currentPlayer.displayHunger();
 		game.currentPlayer.displayExhaustion();
 		game.currentPlayer.displayRage();
@@ -147,7 +159,7 @@ $('#barbarian').on('click', (e) => {
 $('#submit-btn').on('click', () => {
 	game.currentPlayer.displayName();
 	// console.log('click works');
-	
+
 
 })
 
